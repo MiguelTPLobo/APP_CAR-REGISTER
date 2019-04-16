@@ -58,3 +58,19 @@ $(document).on('change','#color',function(){
   $('#carrito').css('color',cor);
 });
 
+$( window ).ready(function() {
+		$(".container").hide();
+	});
+
+  /*$("#change").hide(1000);
+	$("#save").show(1000);*/
+
+$(document).on('change','#bgColor',function(){
+  var color = $('#bgColor').val();
+  $('body').css('background-color',color);
+});
+
+$(document).on('click','#backmemo',function(){
+  $("#backcor").hide(1000);
+  $(".container").show(1000);
+});
