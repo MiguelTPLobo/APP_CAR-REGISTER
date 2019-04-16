@@ -13,6 +13,20 @@ $(document).on('click','#cadastro',function(){
     window.location.reload();
   }
 
+      var elem = document.getElementById("carrito");   
+      var width = 0.5;
+      var id = setInterval(frame, 0.5);
+      function frame() {
+        if (width >= 100) {
+          elem.innerHTML = '<i class="fas fa-car-alt"></i>';
+          clearInterval(id);
+        } else {
+          width+= 0.5; 
+          elem.style.width = width + '%'; 
+          elem.innerHTML = '<i class="fas fa-car-side x5"></i>';
+        }
+      }
+      
   $.ajax({
     type:"post",
     url:"https://the-claudio-whitewolfinspace.c9users.io/cadastrar.php",
@@ -23,12 +37,17 @@ $(document).on('click','#cadastro',function(){
       $('#color').val("");
       $('#valor').val("");
       $('#ano').val("");
-      navigator.notification.alert(data);
-      window.location.reload();
+      var id = setInterval(function() {
+        navigator.notification.alert(data);
+        window.location.reload();
+      }, 700);
     },
     error:function(data){
-      navigator.notification.alert(data);
-      window.location.reload();
+      var id = setInterval(function() {
+        navigator.notification.alert(data);
+        window.location.reload();
+      }, 700);
+          
     }
   });
 });
@@ -36,4 +55,6 @@ $(document).on('click','#cadastro',function(){
 $(document).on('change','#color',function(){
   var cor = $('#color').val();
   $('#carro').css('color',cor);
+  $('#carrito').css('color',cor);
 });
+
